@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 
-
+<?php
+// error_reporting(0);
+if(!isset($_SESSION))
+ {
+     session_start();
+ }
+?>
 
 <html lang="en">
 <head>
@@ -66,7 +72,13 @@
         <ul class="nav nav-pills justify-content-end" style="margin-left:950px">
           <?php
 
+      if(isset($_SESSION["type"])){
+      print($_SESSION["first_name"]);
 
+      }else{
+        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos' onlogin='checkLoginState();'>
+              </fb:login-button>";
+      }
       ?>
         </ul>
       </nav><!-- .main-nav -->
