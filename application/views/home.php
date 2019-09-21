@@ -1,6 +1,6 @@
 <?php
 
- $con = mysqli_connect("localhost","root","","project");
+ $con = mysqli_connect("us-cdbr-iron-east-02.cleardb.net","b1a622bf325640","9008a9dd","heroku_e74b0dc8e642086");
  header('Content-Type: text/html; charset=utf-8');
  ini_set('default_charset', 'utf-8');
  mysqli_set_charset($con,"utf8");
