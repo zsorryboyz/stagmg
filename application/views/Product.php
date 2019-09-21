@@ -3,6 +3,15 @@ $con = mysqli_connect("localhost","root","","project");
 header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset', 'utf-8');
 mysqli_set_charset($con,"utf8");
+
+
+if (isset($_SESSION['first_name'])) {
+  // code...
+}else{
+ header( "location: index" );
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +31,6 @@ mysqli_set_charset($con,"utf8");
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url('assets/css/simple-sidebar.css'); ?>" rel="stylesheet">
 
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
 
@@ -96,17 +102,17 @@ mysqli_set_charset($con,"utf8");
 
 
 
-  <div class="d-flex" id="wrapper" style="margin-left: 20px;">
+  <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
 
-    <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:20px;">
       <div class="list-group list-group-flush">
-        <a class="top text-center">สินค้า</a>
+        <h5 class="top text-center">สินค้า</h5>
         <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
         <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
-        <a class="top text-center">การส่งสินค้า</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
+        <h5 class="top text-center">การส่งสินค้า</h5>
+        <a href="viewOrder" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
       </div>
     </div>
@@ -147,6 +153,7 @@ mysqli_set_charset($con,"utf8");
                   $detail_product = $row['detail_product'];
                   $idProduct_type = $row['idProduct_type'];
 
+                 $urledit = base_url('product/view_Editproduct').'?id='.$idProduct;
 
                   echo "<div class='col-md-3'style='margin-left: 20px;'>
                           <div class='product-list'>
@@ -154,10 +161,10 @@ mysqli_set_charset($con,"utf8");
                           <a href='#'><img class='card-img' src='../$image_product' alt='Card image'></a>
                           <div class='card-img-overlay'>
                         <p class='card-text text-center'style='margin-left: 20px;'>
-                            <a href='product'><span class='btn btn-dark mx-auto w-100'>Edit</span></a>
+                            <a href='$urledit'><span class='btn btn-dark mx-auto w-100'>Edit</span></a>
                         </p>
                         <p class='card-text text-center'style='margin-left: 20px;'>
-                            <a href='#'><span class='btn btn-dark mx-auto w-100'>Delete</span></a>
+                            <a><span data-id='$idProduct' class='btn btn-dark mx-auto w-100 DelPro'>Delete</span></a>
                         </p>
                           </div>
                       </div>
@@ -192,16 +199,48 @@ mysqli_set_charset($con,"utf8");
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+
 
   <!-- Menu Toggle Script -->
     <script>
+
+
+    $(document).ready(function(){
+            $('.DelPro').on('click', function(){
+
+
+                $.ajax({
+                       url: '<?php echo base_url('Product/delete'); ?>',
+                       type: 'post',
+                       dataType: 'html',
+                       data: {id:$(this).data('id')},
+                     }).done(function(response) {
+                       if(response=="success"){
+
+                       window.location.href = "<?php echo base_url('Main/product'); ?>";
+
+                       }
+
+                       alert(response);
+
+
+                     });
+
+            });
+
+
+
+
+
+
 
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+      });
   </script>
 
 </body>

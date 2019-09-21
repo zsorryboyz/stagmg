@@ -1,5 +1,25 @@
 <!DOCTYPE html>
+
+<?php
+
+$con = mysqli_connect("localhost","root","","project");
+header('Content-Type: text/html; charset=utf-8');
+ini_set('default_charset', 'utf-8');
+mysqli_set_charset($con,"utf8");
+
+
+if (isset($_SESSION['first_name'])) {
+  // code...
+}else{
+ header( "location: index" );
+}
+
+
+
+?>
 <html lang="en">
+
+
 
 <head>
 
@@ -8,13 +28,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Scrolling Nav - Start Bootstrap Template</title>
+  <title>STAQMG</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url('assets/css/scrolling-nav.css'); ?>" rel="stylesheet">
@@ -85,77 +106,53 @@
 </nav>
 <br>
     <br>
-<!-- search -->
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="่เลขที่ออเดอร์..." aria-label="Search"style="margin-left: 75px;">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหารหัสบิล</button>
-    <div class="btn-group mr-2" role="group" aria-label="First group" style="margin-left: 700px;">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ทั้งหมด</button>
-      <button type="button" class="btn btn-info"style="margin-left: 10px;">ยังไม่จ่าย</button>
-      <button type="button" class="btn btn-danger"style="margin-left: 10px;">จ่ายแล้ว</button>
-      <button type="button" class="btn btn-warning"style="margin-left: 10px;">ส่งแล้ว</button>
+
+    <div class="nav nav-pills justify-content-end" role="group" aria-label="First group">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-toggle="modal" data-target="#exampleModal" style="margin-right:20px;">
+        <i class="material-icons" style="font-size:15px">monetization_on</i> ยืนยันชำระเงิน</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal11" style="margin-right:95px;">
+          <i class="material-icons"  style="font-size:15px">monetization_on</i> ลบรายการ</button>
     </div>
-  </form>
 
-<!-- table -->
-<div class="container">
-
-  <br>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>เลขที่ออเดอร์</th>
-        <th>วันเปิดออเดอร์</th>
-        <th>ชื่อผู้สั่งสินค้า</th>
-        <th>จำนวนเงินทั้งหมด</th>
-        <th>สถานะ</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@mail.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@greatstuff.com</td>
-      </tr>
-      <tr>
-        <td>Anja</td>
-        <td>Ravendale</td>
-        <td>a_r@test.com</td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-
-
-
-
-<!-- Modal -->
+    <!-- Modal Confirm -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ยืนยันการชำระเงิน</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <h5 class="text-center">คุณต้องการยืนยันการชำระเงินหรือไม่?</h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" id="sumbmit" class="btn btn-primary">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal ship_order -->
+<div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">จัดส่งสินค้า</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <h5 class="text-center">คุณต้องการจัดส่งสินค้าหรือไม่?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" id="sumbmitship" class="btn btn-primary">ยืนยัน</button>
       </div>
     </div>
   </div>
@@ -165,15 +162,174 @@
 
 
 
+    <br>
+
+<!-- search -->
+  <form class="form-inline">
+    <input class="form-control mr-sm-2 search-order" id="search-order"  placeholder="่เลขที่ออเดอร์..." aria-label="Search"style="margin-left: 190px;">
+
+    <div class="btn-group mr-2" role="group" aria-label="First group" style="margin-left: 690px;">
+      <button type="button" class="btn btn-info"style="margin-left: 10px;">ทั้งหมด</button>
+      <button type="button" class="btn btn-warning text-light"style="margin-left: 10px;">ยังไม่จ่าย</button>
+      <button type="button" class="btn btn-danger"style="margin-left: 10px;">โอนแล้ว</button>
+      <button type="button" class="btn btn-success"style="margin-left: 10px;">ส่งแล้ว</button>
+    </div>
+
+
+<!-- table -->
+<div class="container">
+
+    <div ="col-md-12">
+
+  <br>
+  <table  id="tableorder" class="table table-hover table-striped table-sm">
+    <thead>
+      <tr class='bg-info text-light text-center'>
+        <th></th>
+        <th>เลขที่ออเดอร์</th>
+        <th>วันเปิดออเดอร์</th>
+        <th>ชื่อผู้สั่งสินค้า</th>
+        <th>จำนวนเงินทั้งหมด</th>
+        <th>สถานะ</th>
+      </tr>
+    </thead>
+    <tbody id = "table-order">
+      <?php
+
+          $getOrder = "select * from `order`";
+          $runOrder = mysqli_query($con,$getOrder);
+          while ($rowOrder=mysqli_fetch_array($runOrder)){
+
+              $Orderid = $rowOrder['idOrder'];
+              $DateOrder = $rowOrder['orderdate'];
+              $nameCus = $rowOrder['name_customer'];
+              $Priceall  = $rowOrder['Price_all'];
+              $status  = $rowOrder['status_order'];
+
+              echo "
+
+              <tr>
+
+                <td scope='row' class='text-center'><input type='checkbox' class='orderch' id='cho_$Orderid' value='$Orderid' data-status='$status' data-id='$Orderid'  /></td>
+                <td class='text-center numorder'>$Orderid</td>
+                <td class='text-center'>$DateOrder</td>
+                <td class='text-center'>$nameCus</td>
+                <td class='text-center'>$Priceall .00 บาท</td>
+
+
+                ";
+
+
+                if($status=="ยังไม่จ่าย"){
+
+                  echo "<td class='text-warning text-center'>$status</td></tr>";
+                }else if($status=="โอนแล้ว"){
+
+                  echo "<td class='text-danger text-center'>$status</td></tr>";
+
+
+                }else if($status=="ส่งแล้ว"){
+
+                  echo "<td class='text-success text-center'>$status</td></tr>";
+
+                }
+
+
+
+            }
+
+
+
+
+       ?>
+
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+
 <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
+
+  $(document).ready(function(){
+
+
+    $("#search-order").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $("#table-order tr").filter(function() {
+     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
     });
-  });
-});
+    });
+
+
+    $("#sumbmit").click(function(){
+
+
+
+      var or1 = [];
+
+      $('input[class=orderch]').each(function () {
+
+        if(this.checked){
+          or1.push({
+
+            orderid:$(this).data('id'),
+            status:$(this).data('status'),
+
+
+
+
+          });
+
+        }
+
+        });
+
+
+        $.ajax({
+               url: '<?php echo base_url('Product/update_order'); ?>',
+               type: 'post',
+               dataType: 'html',
+               data: {data:or1},
+             }).done(function(response) {
+               if(response=="success"){
+
+               window.location.href = "<?php echo base_url('Main/order'); ?>";
+
+               }
+                alert(response);
+
+             });
+
+
+      });
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+
 </script>
 
 

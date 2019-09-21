@@ -6,6 +6,15 @@ $con = mysqli_connect("localhost","root","","project");
 header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset', 'utf-8');
 mysqli_set_charset($con,"utf8");
+
+if (isset($_SESSION['first_name'])) {
+  // code...
+}else{
+ header( "location: index" );
+}
+
+
+
 ?>
 <html lang="en">
 
@@ -18,7 +27,7 @@ mysqli_set_charset($con,"utf8");
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Simple Sidebar - Start Bootstrap Template</title>
+  <title>STAQMG</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -82,7 +91,7 @@ function validate() {
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div id="page-content-wrapper" >
       <div class="container-fluid">
         <div class="row"><!-- row Begin -->
 
@@ -291,6 +300,7 @@ function validate() {
       $("#wrapper").toggleClass("toggled");
     });
   </script>
+
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
 
 </body>

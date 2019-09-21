@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <?php
 // error_reporting(0);
 if(!isset($_SESSION))
@@ -6,218 +7,238 @@ if(!isset($_SESSION))
      session_start();
  }
 ?>
+
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>STAQMG</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
 
-  <title>SHAQMG</title>
 
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="<?php  echo base_url ('assets/test/lib/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="<?php  echo base_url ('assets/test/lib/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet">
+  <link href="<?php  echo base_url ('assets/test/lib/animate/animate.min.css'); ?>" rel="stylesheet">
+  <link href="<?php  echo base_url ('assets/test/lib/ionicons/css/ionicons.min.css'); ?>" rel="stylesheet">
+  <link href="<?php  echo base_url ('assets/test/lib/owlcarousel/assets/owl.carousel.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url ('assets/test/lib/lightbox/css/lightbox.min.css'); ?>" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/css/cssedit.css'); ?>" rel="stylesheet">
+
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.slim.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
 
-  <style>
-  body  {
-  background-image: url("paper.gif");
-  background-color: #cccccc;
-  }
-  </style>
+  <!-- Main Stylesheet File -->
+  <link href="<?php echo base_url ('assets/test/css/style1.css'); ?>" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Rapid
+    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v4.0&appId=639497196533705&autoLogAppEvents=1"></script>
+
+
 </head>
 
-
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="#">
-    <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="40" height="40" class="d-inline-block align-top" alt="">
-    Bootstrap
-  </a>
-
-  <ul class="nav nav-pills justify-content-end">
-    <!-- <div class="fb-login-button" id="loginbutton" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
-    <!-- <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">เข้าสู่ระบบ</a>
-    </li> -->
-    <?php
-
-if(isset($_SESSION["type"])){
-print($_SESSION["first_name"]);
-
-}else{
-  echo "<fb:login-button scope='public_profile,email,user_photos' onlogin='checkLoginState();'>
-        </fb:login-button>";
-}
-?>
-
-    <li class="nav-item">
-        <a href="Main/register" class="btn btn-warning" role="button" aria-pressed="true">สมัครใช้งาน!!</a>
-    </li>
-  </ul>
-
-</nav>
-
-        <!-- Page Content -->
-
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12 text-center">
-                  <h1 class="background-page"></h1>
-                  <h1 class="mt-5">ยินดีต้อนรับเข้าสู่เว็บไซต์</h1>
-                  <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-                  <ul class="list-unstyled">
-                    <li>Bootstrap 4.3.1</li>
-                    <li>jQuery 3.4.1</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
 
 
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body text-center">
+    <div class="container">
 
-              <a href="#" class="fb">
-                <img src="<?php echo base_url('assets/img/facebooklogin.png'); ?>" width="350" >
-              </a>
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="Main/home" class="scrollto"><span>STAQMG</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <nav class="navbar navbar-light">
+        <ul class="nav nav-pills justify-content-end" style="margin-left:950px">
+          <?php
 
-            </div>
+      if(isset($_SESSION["type"])){
+      print($_SESSION["first_name"]);
+
+      }else{
+        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos' onlogin='checkLoginState();'>
+              </fb:login-button>";
+      }
+      ?>
+        </ul>
+      </nav><!-- .main-nav -->
+
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h3>ยินดีต้อนรับเข้าสู่...</h3><h2><span>ระบบจัดการร้านค้าออนไลน์!</span></h2>
+
+          <div>
+
           </div>
+        </div>
+
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="<?php echo base_url('assets/test/img/intro-img.svg'); ?>" alt="" class="img-fluid">
         </div>
       </div>
 
+    </div>
+  </section><!-- #intro -->
 
-      <script>
-    $(document).ready(function(){
-      function postAjax(url, data, success) {
-          var params = typeof data == 'string' ? data : Object.keys(data).map(
-                  function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
-              ).join('&');
+  <script>
 
-          var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-          xhr.open('POST', url);
-          xhr.onreadystatechange = function() {
-              if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
-          };
-          xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-          xhr.send(params);
-          return xhr;
+
+$(document).ready(function(){
+  function postAjax(url, data, success) {
+      var params = typeof data == 'string' ? data : Object.keys(data).map(
+              function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+          ).join('&');
+
+      var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+      xhr.open('POST', url);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+      };
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send(params);
+      return xhr;
+  }
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+      console.log('statusChangeCallback');
+      console.log(response);                   // The current login status of the person.
+      if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+        testAPI();
+
+
+      } else {                                 // Not logged into your webpage or we are unable to tell.
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into this webpage.';
       }
-        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-          console.log('statusChangeCallback');
-          console.log(response);                   // The current login status of the person.
-          if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-            testAPI();
+    }
 
 
-          } else {                                 // Not logged into your webpage or we are unable to tell.
-            document.getElementById('status').innerHTML = 'Please log ' +
-              'into this webpage.';
-          }
-        }
+     window.checkLoginState  = function() {               // Called when a person is finished with the Login Button.
+      FB.getLoginStatus(function(response) {   // See the onlogin handler
+        statusChangeCallback(response);
+         console.log(response.authResponse.accessToken);
+      });
+      FB.login(function(response) {
+      }, {scope: 'email,user_photos,public_profile'});
+
+    }
 
 
-         window.checkLoginState  = function() {               // Called when a person is finished with the Login Button.
-          FB.getLoginStatus(function(response) {   // See the onlogin handler
-            statusChangeCallback(response);
-             console.log(response.authResponse.accessToken);
-          });
-          FB.login(function(response) {
-          }, {scope: 'email,user_photos,public_profile'});
-
-        }
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '639497196533705',
+        cookie     : true,                     // Enable cookies to allow the server to access the session.
+        xfbml      : true,                     // Parse social plugins on this webpage.
+        version    : 'v4.0.'           // Use this Graph API version for this call.
+      });
 
 
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '639497196533705',
-            cookie     : true,                     // Enable cookies to allow the server to access the session.
-            xfbml      : true,                     // Parse social plugins on this webpage.
-            version    : 'v4.0.'           // Use this Graph API version for this call.
-          });
+      FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+    };
 
 
-          FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-            statusChangeCallback(response);        // Returns the login status.
-          });
-        };
+    (function(d, s, id) {                      // Load the SDK asynchronously
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
 
-        (function(d, s, id) {                      // Load the SDK asynchronously
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me',{ fields: 'first_name,last_name,name, email,id,picture.height(300).width(300)' }, function(response) {
+        console.log(JSON.stringify(response))
+        dataresponse = response;
 
+        $.ajax({
+               url: '<?php echo base_url('Users/Login'); ?>',
+               type: 'post',
+               data: {
+                        first_name:response.first_name,
+                         last_name:response.last_name,
+                         name:response.name,
+                         email:response.email,
+                         id:response.id,
+                         picture:response.picture.data.url},
 
-        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-          console.log('Welcome!  Fetching your information.... ');
-          FB.api('/me',{ fields: 'first_name,last_name,name, email,id,picture.height(300).width(300)' }, function(response) {
-            console.log(JSON.stringify(response))
-            dataresponse = response;
+             }).done(function(response) {
+                 // alert(response);
 
-            $.ajax({
-                   url: '<?php echo base_url('Users/Login'); ?>',
-                   type: 'post',
-                   data: {
-                            first_name:response.first_name,
-                             last_name:response.last_name,
-                             name:response.name,
-                             email:response.email,
-                             id:response.id,
-                             picture:response.picture.data.url},
-
-                 }).done(function(response) {
-                     // alert(response);
-
-                     if(response=="success"){
-                       window.location.href = "<?php echo base_url('Main/home'); ?>";
-                     }
-                 });
-          // postAjax('controller/Login.php', {
-          // first_name:response.first_name,
-          // last_name:response.last_name,
-          // name:response.name,
-          // email:response.email,
-          // id:response.id,
-          // picture:response.picture.data.url }, function(data){ console.log(data); });
-          });
-        }
+                 if(response=="success"){
+                   window.location.href = "<?php echo base_url('Main/home'); ?>";
+                 }
+             });
+      // postAjax('controller/Login.php', {
+      // first_name:response.first_name,
+      // last_name:response.last_name,
+      // name:response.name,
+      // email:response.email,
+      // id:response.id,
+      // picture:response.picture.data.url }, function(data){ console.log(data); });
+      });
+    }
 });
-      </script>
+  </script>
 
-  <!-- Bootstrap core JavaScript -->
+
+
+
+
+
+
+
+  <!-- JavaScript Libraries -->
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.slim.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/jquery/jquery-migrate.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/easing/easing.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/mobile-nav/mobile-nav.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/wow/wow.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/waypoints/waypoints.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/counterup/counterup.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/owlcarousel/owl.carousel.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/isotope/isotope.pkgd.min.js'); ?>"></script>
+  <script src="<?php echo base_url ('assets/test/lib/lightbox/js/lightbox.min.js'); ?>"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="<?php echo base_url ('assets/test/contactform/contactform.js'); ?>"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="<?php echo base_url ('assets/test/js/main.js'); ?>"></script>
 
 </body>
-
 </html>

@@ -52,4 +52,16 @@ class Main extends CI_Controller {
 		$this->load->view('orderstore');
 
 	}
+
+	public function viewOrder()
+	{
+		$this->load->view('viewOrder');
+
+	}
+
+	public function test()
+	{
+		$this->load->view('test');
+
+	}
 }

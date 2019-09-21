@@ -16,10 +16,6 @@
   <link rel="import" href="<?php echo base_url('assets/css/cssedit.css'); ?>">
 
   <style>
-  body  {
-  background-image: url("paper.gif");
-  background-color: #cccccc;
-  }
 
   </style>
 
@@ -31,7 +27,7 @@
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="http://localhost/Product/">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="40" height="40" class="d-inline-block align-top" alt="">
-    Bootstrap
+    STAQMG                                          
   </a>
 
   </nav>
