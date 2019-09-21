@@ -36,7 +36,7 @@ class Main extends CI_Controller {
   }
 	public function product()
 	{
-		$this->load->view('product');
+		$this->load->view('Product');
 	}
 	public function product_add()
 	{
