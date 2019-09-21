@@ -49,7 +49,7 @@ class Main extends CI_Controller {
 	}
 	public function orderstore()
 	{
-		$this->load->view('orderstore');
+		$this->load->view('Orderstore');
 
 	}
 
