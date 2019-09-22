@@ -54,7 +54,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] :"heroku");
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] :"development");
 
 /*
  *---------------------------------------------------------------
@@ -69,15 +69,8 @@ switch (ENVIRONMENT)
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
-		define("base_url", "http://localhost/Product");
+
 	break;
-
-	case 'heroku':
-		  error_reporting(-1);
-		  ini_set('display_errors', 1);
-		  
-	      define("base_url", "https://staqmg.herokuapp.com/");
-
 	case 'testing':
 	case 'production':
 		ini_set('display_errors', 0);

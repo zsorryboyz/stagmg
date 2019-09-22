@@ -24,7 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/Product';
+if($_SERVER['HTTP_HOST']==="localhost"){
+    $config['base_url'] = 'http://localhost/Product';
+
+}else{
+    $config['base_url'] = 'https://staqmg.herokuapp.com';
+}
+
+
 
 
 /*

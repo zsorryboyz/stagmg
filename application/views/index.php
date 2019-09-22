@@ -79,7 +79,6 @@ header('Access-Control-Allow-Origin: *');
       }else{
         echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos,pages_messaging' onlogin='checkLoginState();'>
               </fb:login-button>";
-echo $_SERVER['HTTP_HOST'];
 
       }
       ?>
