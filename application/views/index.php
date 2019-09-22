@@ -5,6 +5,8 @@
 if(!isset($_SESSION))
  {
      session_start();
+header('Access-Control-Allow-Origin: *');
+
  }
 ?>
 
@@ -76,7 +78,7 @@ if(!isset($_SESSION))
       print($_SESSION["first_name"]);
 
       }else{
-        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos' onlogin='checkLoginState();'>
+        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos,pages_messaging' onlogin='checkLoginState();'>
               </fb:login-button>";
       }
       ?>
@@ -147,7 +149,7 @@ $(document).ready(function(){
          console.log(response.authResponse.accessToken);
       });
       FB.login(function(response) {
-      }, {scope: 'email,user_photos,public_profile'});
+      }, {scope: 'email,user_photos,public_profile,pages_messaging'});
 
     }
 
