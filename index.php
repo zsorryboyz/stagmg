@@ -53,9 +53,8 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
- $url = parse_url(getenv("DEPLOY"));
 
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $url ||"development");
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] :"heroku");
 
 /*
  *---------------------------------------------------------------
