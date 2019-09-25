@@ -64,26 +64,27 @@ if (isset($_SESSION['first_name'])) {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="home">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="Messenger">สนทนา</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="order">รายการสั่งสินค้า</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">สถิติ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="product">จัดการร้านค้า</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="#">สถิติ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
+        </li>
+      </ul>
+    </div>
 </nav>
 
 
@@ -92,12 +93,12 @@ if (isset($_SESSION['first_name'])) {
 
     <!-- Sidebar -->
 
-    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:20px;">
+    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:10px;">
       <div class="list-group list-group-flush">
-        <h5 class="top text-center">สินค้า</h5>
+        
         <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
         <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
-        <h5 class="top text-center">การส่งสินค้า</h5>
+        
         <a href="#" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
       </div>
@@ -114,7 +115,7 @@ if (isset($_SESSION['first_name'])) {
       </div>
 
       <form class="form-inline">
-        <input class="form-control mr-sm-2 search-order" id="search-order"  placeholder="ชื่อสินค้า..." aria-label="Search"style="margin-left: 800px;">
+        <input class="form-control mr-sm-2 search-order" id="search-order"  placeholder="ชื่อสินค้า..." aria-label="Search"style="margin-left:70px; margin-top:10px">
       </form>
 
 
@@ -125,7 +126,7 @@ if (isset($_SESSION['first_name'])) {
 
             <div class="row">
               <table  class="table table-borderless">
-  <thead>
+  <thead style="background-color: #1de9b6;">
     <tr>
       <th scope="col" class="text-center"></th>
       <th scope="col" class="text-center">ชื่อสินค้า</th>

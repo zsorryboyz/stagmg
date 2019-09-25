@@ -68,29 +68,27 @@ if (isset($_SESSION['first_name'])) {
 
 <body id="page-top">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="home">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="Messenger">สนทนา</a>
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="order">รายการสั่งสินค้า</a>
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">สถิติ</a>
+          <a class="nav-link text-light" href="#">สถิติ</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="product">จัดการร้านค้า</a>
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
         </li>
       </ul>
     </div>
-
-
 </nav>
 <!-- Load Facebook SDK for JavaScript -->
       <div id="fb-root"></div>
@@ -125,8 +123,8 @@ if (isset($_SESSION['first_name'])) {
 </div> -->
 <!-- <br> -->
 
-    <div class="nav nav-pills justify-content-end" role="group" aria-label="First group" style="margin-right:70px;">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal" id="btnmodal">
+    <div class="nav nav-pills justify-content-end" role="group" aria-label="First group" style="margin-right:70px; margin-top:10px">
+      <button type="button" class="btn"  data-toggle="modal" data-target="#submitModal" id="btnmodal" style="background-color: #1de9b6;">
         <i class="material-icons" style="font-size:15px">monetization_on</i> เปิดรายการสั่งซื้อ</button>
     </div>
 

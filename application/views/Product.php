@@ -34,42 +34,22 @@ if (isset($_SESSION['first_name'])) {
 
 <style>
 
-
-
-.product-list{
-    text-align: center;
-}
-.product-list .offer{
-    font-size:0.80rem;
-    height: 56px;
-    padding-top: 7px;
-}
-.product-list .card-img {
-    width: 200px !important;
-    height:200px;
-    margin: auto auto;
-}
-.product-list:hover .card-img-overlay{
+.product:hover .card-img-overlay{
     display: block;
 }
-.product-list .card-img-overlay{
+.product .card-img-overlay{
     display: none;
-    background: ;
-    padding-top: 50px;
-    width: 95%;
-    height: 95%;
-    margin: auto;
+   
 }
-.product-list .card-title a{
-    color: #000;
+
+.card-img{
+
+  width: 150px !important;
+    height:150px;
+    margin: auto auto;
+
 }
-.product-list .card-title a:hover{
-    color: #484848;
-    text-decoration: none;
-}
-.product-list .card-title,.product-list .price{
-    padding-top: 20px;
-}
+
 </style>
 
 
@@ -78,26 +58,27 @@ if (isset($_SESSION['first_name'])) {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="home">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="Messenger">สนทนา</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="order">รายการสั่งสินค้า</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">สถิติ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="product">จัดการร้านค้า</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="#">สถิติ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
+        </li>
+      </ul>
+    </div>
 </nav>
 
 
@@ -106,12 +87,12 @@ if (isset($_SESSION['first_name'])) {
 
     <!-- Sidebar -->
 
-    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:20px;">
+    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:10px;">
       <div class="list-group list-group-flush">
-        <h5 class="top text-center">สินค้า</h5>
+      
         <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
         <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
-        <h5 class="top text-center">การส่งสินค้า</h5>
+        
         <a href="viewOrder" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
       </div>
@@ -140,7 +121,7 @@ if (isset($_SESSION['first_name'])) {
             <div class="row">
               <?php
 
-              $get_p_cats = "select * from product";
+              $get_p_cats = "select * from product  where idMember";
               $run_p_cats = mysqli_query($con,$get_p_cats);
 
               while ($row=mysqli_fetch_array($run_p_cats)){
@@ -155,22 +136,22 @@ if (isset($_SESSION['first_name'])) {
 
                  $urledit = base_url('product/view_Editproduct').'?id='.$idProduct;
 
-                  echo "<div class='col-md-3'style='margin-left: 20px;'>
-                          <div class='product-list'>
-                          <div class='card'>
+                  echo "<div class='col-md-3'>
+                          <div class='product'>
+                          <div class='c1'>
                           <a href='#'><img class='card-img' src='../$image_product' alt='Card image'></a>
                           <div class='card-img-overlay'>
-                        <p class='card-text text-center'style='margin-left: 20px;'>
-                            <a href='$urledit'><span class='btn btn-dark mx-auto w-100'>Edit</span></a>
+                        <p class='card-text text-center' style='margin-right:25px'>
+                            <a href='$urledit'><span class='btn btn-success mx-auto w-50'>Edit</span></a>
                         </p>
-                        <p class='card-text text-center'style='margin-left: 20px;'>
-                            <a><span data-id='$idProduct' class='btn btn-dark mx-auto w-100 DelPro'>Delete</span></a>
+                        <p class='card-text text-center' style='margin-right:25px'>
+                            <a><span data-id='$idProduct' class='btn btn-danger mx-auto w-50 DelPro'>Delete</span></a>
                         </p>
                           </div>
                       </div>
-                      <div class='title'style='margin-left: 20px;'>
+                      <div class='title text-center' style='margin-right:20px'>
                       <h5>$name_product</h5>
-                      <p class='card-text'>$price ฿</p>
+                      <p class='card-text'>$price บาท</p>
                       </div>
                   </div>
                   </div>";

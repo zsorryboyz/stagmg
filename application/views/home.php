@@ -44,23 +44,24 @@ if (isset($_SESSION['first_name'])) {
 
 <body id="page-top" class="">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="home">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="Messenger">สนทนา</a>
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="order">รายการสั่งสินค้า</a>
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">สถิติ</a>
+          <a class="nav-link text-light" href="#">สถิติ</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="product">จัดการร้านค้า</a>
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
         </li>
       </ul>
     </div>

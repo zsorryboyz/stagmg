@@ -51,42 +51,42 @@ function validate() {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light "style="background-color: #81d4fa;">
-  <a class="navbar-brand" href="home">
+ <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="Messenger">สนทนา</a>
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="order">รายการสั่งสินค้า</a>
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">สถิติ</a>
+          <a class="nav-link text-light" href="#">สถิติ</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="product">จัดการร้านค้า</a>
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
         </li>
       </ul>
     </div>
 </nav>
 
 
-
   <div class="d-flex" id="wrapper" >
 
     <!-- Sidebar -->
 
-    <div class="bg-info border-right" id="sidebar-wrapper">
+    <div class="border-right" id="sidebar-wrapper" style="margin-top:10px">
       <div class="list-group list-group-flush">
         <!-- <a class="top text-center">สินค้า</a> -->
-        <a href="Product" class="list-group-item list-group-item-action bg-info text-light">อัลบัมสินค้า</a>
-        <a href="orderstore" class="list-group-item list-group-item-action bg-info text-light">สินค้าคงคลัง</a>
+        <a href="Product" class="list-group-item list-group-item-action ">อัลบัมสินค้า</a>
+        <a href="orderstore" class="list-group-item list-group-item-action ">สินค้าคงคลัง</a>
         <!-- <a class="top text-center">การส่งสินค้า</a> -->
-        <a href="#" class="list-group-item list-group-item-action bg-info text-light">การจัดส่งสินค้า</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info text-light">ประวัติการส่ง</a>
+        <a href="#" class="list-group-item list-group-item-action ">การจัดส่งสินค้า</a>
+        <a href="#" class="list-group-item list-group-item-action ">ประวัติการส่ง</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -98,7 +98,7 @@ function validate() {
 
             <div class="col-lg-12"><!-- col-lg-12 Begin -->
 
-                <ol class="breadcrumb bg-secondary text-light"><!-- breadcrumb Begin -->
+                <ol class="breadcrumb" style="margin-top:10px"><!-- breadcrumb Begin -->
 
                     <li class="active"><!-- active Begin -->
 
@@ -189,7 +189,7 @@ function validate() {
 
                                         <input id="product_img1" type="file" class="form-control" required>
                                         <div class="invalid-feedback">
-                                            กรุณากรอกเพิ่มรูปสินค้า!
+                                            กรุณาเพิ่มรูปสินค้า!
                                         </div>
                                     </div><!-- col-md-6 Finish -->
 
@@ -241,7 +241,7 @@ function validate() {
                                  </div><!-- form-group Finish -->
                                  <div class="form-group"><!-- form-group Begin -->
 
-                                    <label class="col-md-3 control-label"></label>
+                                  
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
