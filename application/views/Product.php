@@ -134,7 +134,7 @@ if (isset($_SESSION['first_name'])) {
                   $detail_product = $row['detail_product'];
                   $idProduct_type = $row['idProduct_type'];
 
-                 $urledit = base_url('product/Editproduct').'?id='.$idProduct;
+                 $urledit = base_url('product/view_Editproduct').'?id='.$idProduct;
 
                   echo "<div class='col-md-3'>
                           <div class='product'>
