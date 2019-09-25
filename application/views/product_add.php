@@ -41,7 +41,7 @@ if (isset($_SESSION['first_name'])) {
 
 function validate() {
   var element = document.getElementById('product_title');
-  element.value = element.value.replace(/[^a-zA-Z]+/, '');
+  element.value = element.value.replace(/[^_a-zA-Z]+/, '');
 };
 
 </script>
@@ -51,7 +51,7 @@ function validate() {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light "style="background-color: #81d4fa;">
   <a class="navbar-brand" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
@@ -75,18 +75,18 @@ function validate() {
 
 
 
-  <div class="d-flex" id="wrapper" style="margin-left: 20px;">
+  <div class="d-flex" id="wrapper" >
 
     <!-- Sidebar -->
 
-    <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="bg-info border-right" id="sidebar-wrapper">
       <div class="list-group list-group-flush">
-        <a class="top text-center">สินค้า</a>
-        <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
-        <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
-        <a class="top text-center">การส่งสินค้า</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
+        <!-- <a class="top text-center">สินค้า</a> -->
+        <a href="Product" class="list-group-item list-group-item-action bg-info text-light">อัลบัมสินค้า</a>
+        <a href="orderstore" class="list-group-item list-group-item-action bg-info text-light">สินค้าคงคลัง</a>
+        <!-- <a class="top text-center">การส่งสินค้า</a> -->
+        <a href="#" class="list-group-item list-group-item-action bg-info text-light">การจัดส่งสินค้า</a>
+        <a href="#" class="list-group-item list-group-item-action bg-info text-light">ประวัติการส่ง</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -98,11 +98,11 @@ function validate() {
 
             <div class="col-lg-12"><!-- col-lg-12 Begin -->
 
-                <ol class="breadcrumb"><!-- breadcrumb Begin -->
+                <ol class="breadcrumb bg-secondary text-light"><!-- breadcrumb Begin -->
 
                     <li class="active"><!-- active Begin -->
 
-                        <i class="fa fa-dashboard"></i>/ Insert Products
+                        <i class="fa fa-dashboard"></i>/ เพิ่มสินค้า
 
                     </li><!-- active Finish -->
 
@@ -122,7 +122,7 @@ function validate() {
 
                        <h3 class="panel-title"><!-- panel-title Begin -->
 
-                           <i class="fa fa-money fa-fw"></i> Insert Product
+                           <i class="fa fa-money fa-fw"></i> เพิ่มสินค้า
 
                        </h3><!-- panel-title Finish -->
 
@@ -130,16 +130,19 @@ function validate() {
 
                    <div class="panel-body"><!-- panel-body Begin -->
 
-                       <form method="post" class="form-horizontal" enctype="multipart/form-data"><!-- form-horizontal Begin -->
+                       <form method="post" class="needs-validation" enctype="multipart/form-data" novalidate><!-- form-horizontal Begin -->
 
                            <div class="form-group"><!-- form-group Begin -->
 
-                              <label class="col-md-3 control-label"> Product Name </label>
+                              <label class="col-md-3 control-label"> ชื่อสินค้า </label>
 
                               <div class="col-md-6"><!-- col-md-6 Begin -->
 
                                   <input name="product_title" type="text" name="text_key" onkeyup="validate();"
                                    id="product_title" class="form-control" required>
+                                   <div class="invalid-feedback">
+                                      กรุณากรอกชื่อสินค้า!
+                                   </div>
 
                               </div><!-- col-md-6 Finish -->
 
@@ -147,7 +150,7 @@ function validate() {
 
                            <div class="form-group"><!-- form-group Begin -->
 
-                              <label class="col-md-3 control-label"> Product Type </label>
+                              <label class="col-md-3 control-label"> ประเภทสินค้า </label>
 
                               <div class="col-md-6"><!-- col-md-6 Begin -->
 
@@ -180,36 +183,44 @@ function validate() {
 
                                  <div class="form-group"><!-- form-group Begin -->
 
-                                    <label class="col-md-3 control-label"> Product Image </label>
+                                    <label class="col-md-3 control-label"> รูปสินค้า </label>
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
                                         <input id="product_img1" type="file" class="form-control" required>
-
+                                        <div class="invalid-feedback">
+                                            กรุณากรอกเพิ่มรูปสินค้า!
+                                        </div>
                                     </div><!-- col-md-6 Finish -->
 
                                  </div><!-- form-group Finish -->
 
                                  <div class="form-group"><!-- form-group Begin -->
 
-                                    <label class="col-md-3 control-label"> Product Price </label>
+                                    <label class="col-md-3 control-label"> ราคาสินค้า </label>
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
                                         <input id="product_price" type="text" name="text_plain" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"/
                                         class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            กรุณากรอกราคาสินค้า!
+                                        </div>
 
                                     </div><!-- col-md-6 Finish -->
 
                                  </div><!-- form-group Finish -->
                                  <div class="form-group"><!-- form-group Begin -->
 
-                                    <label class="col-md-3 control-label"> Product Amount </label>
+                                    <label class="col-md-3 control-label"> จำนวนสินค้า </label>
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
                                         <input id="product_Amount" type="text " name="text_plain" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"/
                                         class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            กรุณากรอกกรอกจำนวนสินค้า!
+                                        </div>
 
                                     </div><!-- col-md-6 Finish -->
 
@@ -217,12 +228,14 @@ function validate() {
 
                                  <div class="form-group"><!-- form-group Begin -->
 
-                                    <label class="col-md-3 control-label"> Product Details </label>
+                                    <label class="col-md-3 control-label"> รายละเอียดสินค้า </label>
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
-                                        <textarea id="product_desc" cols="19" rows="6" class="form-control"></textarea>
-
+                                        <textarea id="product_desc" cols="19" rows="6" class="form-control" required></textarea>
+                                        <div class="invalid-feedback">
+                                            กรุณากรอกรายละเอียดสินค้า!
+                                        </div>
                                     </div><!-- col-md-6 Finish -->
 
                                  </div><!-- form-group Finish -->
@@ -232,7 +245,7 @@ function validate() {
 
                                     <div class="col-md-6"><!-- col-md-6 Begin -->
 
-                                        <input name="submit" value="Insert Product" id="button_insert" type="button" class="btn btn-primary form-control">
+                                        <button name="submit" value="Insert Product" id="button_insert" type="submit" class="btn btn-primary form-control">เพิ่มสินค้า</button>
 
                                     </div><!-- col-md-6 Finish -->
 
@@ -257,6 +270,30 @@ function validate() {
 
   <!-- Menu Toggle Script -->
   <script>
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+
+
+
   $(document).ready(function(){
     $("#button_insert").click(function(){
 

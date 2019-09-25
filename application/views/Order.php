@@ -109,7 +109,7 @@ if (isset($_SESSION['first_name'])) {
     <br>
 
     <div class="nav nav-pills justify-content-end" role="group" aria-label="First group">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-toggle="modal" data-target="#exampleModal" style="margin-right:20px;">
+      <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" style="margin-right:20px;">
         <i class="material-icons" style="font-size:15px">monetization_on</i> ยืนยันชำระเงิน</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal11" style="margin-right:95px;">
           <i class="material-icons"  style="font-size:15px">monetization_on</i> ลบรายการ</button>
@@ -138,22 +138,22 @@ if (isset($_SESSION['first_name'])) {
 
 
 
-<!-- Modal ship_order -->
+<!-- Modal delete_order -->
 <div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">จัดส่งสินค้า</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ลบรายการสั่งซื้อสินค้า</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <h5 class="text-center">คุณต้องการจัดส่งสินค้าหรือไม่?</h5>
+          <h5 class="text-center">คุณต้องการลบรายการสั่งซื้อหรือไม่?</h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="button" id="sumbmitship" class="btn btn-primary">ยืนยัน</button>
+        <button type="button" id="sumbmitdel" class="btn btn-primary">ยืนยัน</button>
       </div>
     </div>
   </div>
@@ -192,6 +192,7 @@ if (isset($_SESSION['first_name'])) {
         <th>ชื่อผู้สั่งสินค้า</th>
         <th>จำนวนเงินทั้งหมด</th>
         <th>สถานะ</th>
+        <th>ลบรายการ</th>        
       </tr>
     </thead>
     <tbody id = "table-order">
@@ -216,26 +217,26 @@ if (isset($_SESSION['first_name'])) {
                 <td class='text-center'>$DateOrder</td>
                 <td class='text-center'>$nameCus</td>
                 <td class='text-center'>$Priceall .00 บาท</td>
-
+                
 
                 ";
 
 
                 if($status=="ยังไม่จ่าย"){
 
-                  echo "<td class='text-warning text-center'>$status</td></tr>";
+                  echo "<td class='text-warning text-center'>$status</td>";
+                
                 }else if($status=="โอนแล้ว"){
 
-                  echo "<td class='text-danger text-center'>$status</td></tr>";
-
+                  echo "<td class='text-danger text-center'>$status</td>";
 
                 }else if($status=="ส่งแล้ว"){
 
-                  echo "<td class='text-success text-center'>$status</td></tr>";
+                  echo "<td class='text-success text-center'>$status</td>";
 
                 }
 
-
+                echo "<td class='text-center'><a><span data-id='$Orderid' class='btn btn-danger mx-auto  Delor'>ลบ</span></a></td></tr>";
 
             }
 
@@ -292,12 +293,12 @@ if (isset($_SESSION['first_name'])) {
 
 
           });
-
+            
         }
-
+        
         });
 
-
+        
         $.ajax({
                url: '<?php echo base_url('Product/update_order'); ?>',
                type: 'post',
@@ -317,6 +318,28 @@ if (isset($_SESSION['first_name'])) {
       });
 
 
+      $(".Delor").click(function(){
+
+
+        // alert($(this).data('id'))
+
+        $.ajax({
+               url: '<?php echo base_url('Product/delete_order'); ?>',
+               type: 'post',
+               dataType: 'html',
+               data: {id:$(this).data('id')},
+             }).done(function(response) {
+               if(response=="ลบรายการสั่งซื้อเสร็จสิ้น!"){
+
+               window.location.href = "<?php echo base_url('Main/order'); ?>";
+
+               }
+                alert(response);
+
+             });
+
+
+      });
 
 
 

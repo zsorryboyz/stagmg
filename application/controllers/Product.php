@@ -220,6 +220,14 @@ foreach ($this->input->post('data') as $key => $value) {
       return print("success");
    }
 
+   public function  delete_order(){
 
+
+    $this->db->delete('order', array('idOrder' => $this->input->post('id')));
+     return print("ลบรายการสั่งซื้อเสร็จสิ้น!");
+
+    }
+
+   
 
 }

@@ -77,7 +77,13 @@ header('Access-Control-Allow-Origin: *');
       print($_SESSION["first_name"]);
 
       }else{
-        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos,pages_messaging' onlogin='checkLoginState();'>
+        echo "<fb:login-button class='login-button' scope='public_profile,email,user_photos,
+              pages_messaging,
+              publish_pages,
+              pages_manage_instant_articles,
+              pages_manage_cta,
+              manage_pages,
+              pages_show_list' onlogin='checkLoginState();'>
               </fb:login-button>";
 
       }
@@ -149,7 +155,7 @@ $(document).ready(function(){
          console.log(response.authResponse.accessToken);
       });
       FB.login(function(response) {
-      }, {scope: 'email,user_photos,public_profile,pages_messaging'});
+      }, {scope: 'email,user_photos,public_profile,pages_messaging,publish_pages,pages_manage_instant_articles,pages_manage_cta,manage_pages,pages_show_list'});
 
     }
 
@@ -183,7 +189,14 @@ $(document).ready(function(){
       FB.api('/me',{ fields: 'first_name,last_name,name, email,id,picture.height(300).width(300)' }, function(response) {
         console.log(JSON.stringify(response))
         dataresponse = response;
-
+//         FB.api(
+//     `/${response.id}/ids_for_pages`,
+//     function (response) {
+//       if (response && !response.error) {
+//        alert(response)
+//       }
+//     }
+// );
         $.ajax({
                url: '<?php echo base_url('Users/Login'); ?>',
                type: 'post',
@@ -202,13 +215,13 @@ $(document).ready(function(){
                    window.location.href = "<?php echo base_url('Main/home'); ?>";
                  }
              });
-      // postAjax('controller/Login.php', {
-      // first_name:response.first_name,
-      // last_name:response.last_name,
-      // name:response.name,
-      // email:response.email,
-      // id:response.id,
-      // picture:response.picture.data.url }, function(data){ console.log(data); });
+      postAjax('controller/Login.php', {
+      first_name:response.first_name,
+      last_name:response.last_name,
+      name:response.name,
+      email:response.email,
+      id:response.id,
+      picture:response.picture.data.url }, function(data){ console.log(data); });
       });
     }
 });

@@ -260,6 +260,7 @@ var td = "";
           price:$(this).data('price')};
         }
       });
+
     var text = "";
     text += `<table class="table table-sm table-warning tbtext">
     <thead>
@@ -276,6 +277,8 @@ var td = "";
 
   $('#pages4').empty();
   $('#pages4').append(text);
+   
+
 
   var allsum = 0;
 
@@ -362,7 +365,7 @@ if($(this).html()==="Next"){
   pages = pages+1;
 
 if(pages==1){
-  alert(1)
+  // alert(1)
 
   temp= {};
 $('input[class=chboxselect]').each(function () {
@@ -392,7 +395,7 @@ var td = "";
 
 }else if(pages==2){
 
-  alert(2)
+  // alert(2)
 }else if(pages==3){
 
   var name =  $('#inputName').val();
@@ -528,11 +531,14 @@ var td = "";
                 label:'รายการสินค้า'
 
            },{
-                 content:`<form>
+                 content:`<form  class='needs-validation' novalidate>
   <div class='form-row'>
     <div class='form-group col-md-6'>
       <label for='inputName'>ชื่อ-นามสกุล(ลูกค้า)</label>
-      <input type='text' class='form-control' name="inputName" id="inputName" value=""/  placeholder='ชื่อ-นามสกุล'>
+      <input type='text' class='form-control' name="inputName" id="inputName" value=""/  placeholder='ชื่อ-นามสกุล' required>
+      <div class='invalid-feedback'>
+        กรุณากรอกชื่อ-นามสกุล!
+      </div>
     </div>
     <div class='form-group col-md-6'>
     <label for='inputShip'>บริษัทจัดส่ง</label>
@@ -563,12 +569,18 @@ var td = "";
   </div>
   <div class='form-group'>
     <label for='inputAddress'>ที่อยู่ในการจัดส่ง</label>
-    <input type='text' class='form-control' id='inputAddress' placeholder='ที่อยู่ในการจัดส่ง'>
+    <input type='text' class='form-control' id='inputAddress' placeholder='ที่อยู่ในการจัดส่ง'required>
+    <div class='invalid-feedback'>
+        กรุณากรอกที่อยู่ในการจัดส่ง!
+      </div>
   </div>
   <div class='form-row'>
     <div class='form-group col-md-6'>
       <label for='inputNo'>เบอร์ติดต่อ</label>
-      <input type='text' class='form-control' id='inputNo' placeholder='เบอร์โทรศัพท์'>
+      <input type='text' class='form-control' id='inputNo' placeholder='เบอร์โทรศัพท์' required>
+      <div class='invalid-feedback'>
+        กรุณากรอกเบอร์โทรศัพท์!
+      </div>
     </div>
   </div>
   </form>`,
@@ -580,6 +592,31 @@ var td = "";
              modalSize:'lg'
          });
      });
+
+     (function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('btn-next', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+
+
+
+
 
   </script>
   <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
