@@ -44,7 +44,7 @@ if (isset($_SESSION['first_name'])) {
 
 <body id="page-top" class="">
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4B515D;">
   <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
@@ -109,7 +109,7 @@ if (isset($_SESSION['first_name'])) {
                   	<div class="col-md-8">
                   		<div class="row text-center"style="background height:auto; width: auto;">
                   			<div  class="bg-info  col-md-2"  style="margin-left: 80px;" >
-         							       <p><a href="#" class="text-white">สินค้าทั้งหมด   (ชิ้น)</a>
+         							       <p><a  class="text-white">สินค้าทั้งหมด   (ชิ้น)</a>
                               <br>
                               <h4>
                                 <?php
@@ -138,7 +138,7 @@ if (isset($_SESSION['first_name'])) {
                   			</div>
 
                   			<div class="bg-warning col-md-4"  style="margin-left: 80px;" >
-                  			     <p><a href="#" class="text-white">รายการที่รอจัดส่ง</a><br>
+                  			     <p><a  class="text-white">รายการที่รอจัดส่ง</a><br>
 
                                <h4>
                                  <?php
@@ -166,7 +166,7 @@ if (isset($_SESSION['first_name'])) {
                   			</div>
 
                    			<div class="bg-danger col-md-2" style="margin-left: 80px" >
-                   		       <p><a href="#" class="text-white">ยอดขาย</a>
+                   		       <p><a  class="text-white">ยอดขาย</a>
 
                                <h4>
                                  <?php

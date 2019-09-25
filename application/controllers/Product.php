@@ -56,7 +56,7 @@ foreach ($query->result() as $row)
 }
 
 
-  	$this->load->view('Editproduct',$data );
+  	$this->load->view('Editpro',$data );
 
 }
 

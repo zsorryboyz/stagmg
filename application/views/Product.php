@@ -93,7 +93,7 @@ if (isset($_SESSION['first_name'])) {
         <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
         <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
         
-        <a href="viewOrder" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
+        <a href="viewOrder" class="list-group-item list-group-item-action bg-light">ประวัติการขาย</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
       </div>
     </div>

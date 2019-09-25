@@ -42,120 +42,309 @@
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v4.0&appId=639497196533705&autoLogAppEvents=1"></script>
 
+<style>
+/* Only for snippet */
+.double-nav .breadcrumb-dn {
+  color: #fff;
+}
+
+
+</style>
+
 
 </head>
 
-<body>
 
-<form class="needs-validation" novalidate>
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="1">First name</label>
-      <input type="text" class="form-control" id="1" placeholder="First name" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="2">Last name</label>
-      <input type="text" class="form-control" id="2" placeholder="Last name" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="3">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
+
+<body class="fixed-sn cyan-skin">
+
+<!--Double navigation-->
+<header>
+  <!-- Sidebar navigation -->
+  <div id="slide-out" class="side-nav sn-bg-4 fixed">
+    <ul class="custom-scrollbar">
+      <!-- Logo -->
+      <li>
+        <div class="logo-wrapper waves-light">
+          <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
+      </li>
+      <!--/. Logo -->
+      <!--Social-->
+      <li>
+        <ul class="social">
+          <li><a href="#" class="icons-sm fb-ic"><i class="fab fa-facebook-f"> </i></a></li>
+          <li><a href="#" class="icons-sm pin-ic"><i class="fab fa-pinterest"> </i></a></li>
+          <li><a href="#" class="icons-sm gplus-ic"><i class="fab fa-google-plus-g"> </i></a></li>
+          <li><a href="#" class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a></li>
+        </ul>
+      </li>
+      <!--/Social-->
+      <!--Search Form-->
+      <li>
+        <form class="search-form" role="search">
+          <div class="form-group md-form mt-0 pt-1 waves-light">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+      </li>
+      <!--/.Search Form-->
+      <!-- Side navigation links -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-chevron-right"></i> Submit blog<i
+                class="fas fa-angle-down rotate-icon"></i></a>
+            <div class="collapsible-body">
+              <ul class="list-unstyled">
+                <li><a href="#" class="waves-effect">Submit listing</a>
+                </li>
+                <li><a href="#" class="waves-effect">Registration form</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-hand-pointer"></i> Instruction<i
+                class="fas fa-angle-down rotate-icon"></i></a>
+            <div class="collapsible-body">
+              <ul class="list-unstyled">
+                <li><a href="#" class="waves-effect">For bloggers</a>
+                </li>
+                <li><a href="#" class="waves-effect">For authors</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-eye"></i> About<i class="fas fa-angle-down rotate-icon"></i></a>
+            <div class="collapsible-body">
+              <ul class="list-unstyled">
+                <li><a href="#" class="waves-effect">Introduction</a>
+                </li>
+                <li><a href="#" class="waves-effect">Monthly meetings</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-envelope"></i> Contact me<i class="fas fa-angle-down rotate-icon"></i></a>
+            <div class="collapsible-body">
+              <ul class="list-unstyled">
+                <li><a href="#" class="waves-effect">FAQ</a>
+                </li>
+                <li><a href="#" class="waves-effect">Write a message</a>
+                </li>
+                <li><a href="#" class="waves-effect">FAQ</a>
+                </li>
+                <li><a href="#" class="waves-effect">Write a message</a>
+                </li>
+                <li><a href="#" class="waves-effect">FAQ</a>
+                </li>
+                <li><a href="#" class="waves-effect">Write a message</a>
+                </li>
+                <li><a href="#" class="waves-effect">FAQ</a>
+                </li>
+                <li><a href="#" class="waves-effect">Write a message</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!--/. Side navigation links -->
+    </ul>
+    <div class="sidenav-bg mask-strong"></div>
+  </div>
+  <!--/. Sidebar navigation -->
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
+    <!-- SideNav slide-out button -->
+    <div class="float-left">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="breadcrumb-dn mr-auto">
+      <p>Material Design for Bootstrap</p>
+    </div>
+    <ul class="nav navbar-nav nav-flex-icons ml-auto">
+      <li class="nav-item">
+        <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fas fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.Navbar -->
+</header>
+<!--/.Double navigation-->
+
+<!--Main layout-->
+<main>
+
+  <div class="container-fluid text-center">
+
+    <!--Card-->
+    <div class="card card-cascade wider reverse my-4 pb-5">
+
+      <!--Card image-->
+      <div class="view view-cascade overlay wow fadeIn">
+        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(52).jpg" class="img-fluid">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
       </div>
+      <!--/Card image-->
+
+      <!--Card content-->
+      <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s">
+        <!--Title-->
+        <h4 class="card-title"><strong>My adventure</strong></h4>
+        <h5 class="blue-text"><strong>Photography</strong></h5>
+
+        <p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
+          laudantium, totam rem aperiam.
+        </p>
+
+        <a class="btn btn-primary btn-lg">Primary button</a>
+        <a class="btn btn-secondary btn-lg">Secondary button</a>
+        <a class="btn btn-default btn-lg">Default button</a>
+
+      </div>
+      <!--/.Card content-->
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+
+</main>
+<!--/Main layout-->
+
+<!--Footer-->
+<footer class="page-footer text-center text-md-left pt-4">
+
+  <!--Footer Links-->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!--First column-->
+      <div class="col-md-3">
+        <h5 class="text-uppercase font-weight-bold mb-4">Footer Content</h5>
+        <p>Here you can use rows and columns here to organize your footer content.</p>
+      </div>
+      <!--/.First column-->
+
+      <hr class="w-100 clearfix d-md-none">
+
+      <!--Second column-->
+      <div class="col-md-2 mx-auto">
+        <h5 class="text-uppercase font-weight-bold mb-4">Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#!">Link 1</a></li>
+          <li><a href="#!">Link 2</a></li>
+          <li><a href="#!">Link 3</a></li>
+          <li><a href="#!">Link 4</a></li>
+        </ul>
+      </div>
+      <!--/.Second column-->
+
+      <hr class="w-100 clearfix d-md-none">
+
+      <!--Third column-->
+      <div class="col-md-2 mx-auto">
+        <h5 class="text-uppercase font-weight-bold mb-4">Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#!">Link 1</a></li>
+          <li><a href="#!">Link 2</a></li>
+          <li><a href="#!">Link 3</a></li>
+          <li><a href="#!">Link 4</a></li>
+        </ul>
+      </div>
+      <!--/.Third column-->
+
+      <hr class="w-100 clearfix d-md-none">
+
+      <!--Fourth column-->
+      <div class="col-md-2 mx-auto">
+        <h5 class="text-uppercase font-weight-bold mb-4">Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#!">Link 1</a></li>
+          <li><a href="#!">Link 2</a></li>
+          <li><a href="#!">Link 3</a></li>
+          <li><a href="#!">Link 4</a></li>
+        </ul>
+      </div>
+      <!--/.Fourth column-->
+
     </div>
   </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
+  <!--/.Footer Links-->
+
+  <hr>
+
+  <!--Call to action-->
+  <div class="call-to-action text-center my-4">
+    <ul class="list-unstyled list-inline">
+      <li class="list-inline-item">
+        <h5>Register for free</h5>
+      </li>
+      <li class="list-inline-item"><a href="" class="btn btn-primary">Sign up!</a></li>
+    </ul>
+  </div>
+  <!--/.Call to action-->
+
+  <hr>
+
+<!--Social buttons-->
+<div class="social-section text-center">
+  <ul class="list-unstyled list-inline">
+    <li class="list-inline-item"><a class="btn-floating btn-fb"><i class="fab fa-facebook-f"> </i></a></li>
+    <li class="list-inline-item"><a class="btn-floating btn-tw"><i class="fab fa-twitter"> </i></a></li>
+    <li class="list-inline-item"><a class="btn-floating btn-gplus"><i class="fab fa-google-plus-g"> </i></a></li>
+    <li class="list-inline-item"><a class="btn-floating btn-li"><i class="fab fa-linkedin-in"> </i></a></li>
+    <li class="list-inline-item"><a class="btn-floating btn-git"><i class="fab fa-github"> </i></a></li>
+  </ul>
+</div>
+<!--/.Social buttons-->
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3 text-center">
+    <div class="container-fluid">
+      © 2018 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+
     </div>
   </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-      <label class="form-check-label" for="invalidCheck">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
+  <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
 
 <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+
+// SideNav Initialization
+$(".button-collapse").sideNav();
+
+new WOW().init();
 </script>
 
 
 
-  <!-- JavaScript Libraries -->
-  <script src="<?php echo base_url('assets/vendor/jquery/jquery.slim.min.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/jquery/jquery.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/jquery/jquery-migrate.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/easing/easing.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/mobile-nav/mobile-nav.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/wow/wow.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/waypoints/waypoints.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/counterup/counterup.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/owlcarousel/owl.carousel.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/isotope/isotope.pkgd.min.js'); ?>"></script>
-  <script src="<?php echo base_url ('assets/test/lib/lightbox/js/lightbox.min.js'); ?>"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="<?php echo base_url ('assets/test/contactform/contactform.js'); ?>"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="<?php echo base_url ('assets/test/js/main.js'); ?>"></script>
-
 </body>
+
+
+
+
 </html>
