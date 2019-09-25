@@ -123,7 +123,7 @@ if (isset($_SESSION['first_name'])) {
 </div> -->
 <!-- <br> -->
 
-    <div class="nav nav-pills justify-content-end" role="group" aria-label="First group" style="margin-right:70px; margin-top:10px">
+    <div class="nav nav-pills justify-content-end" role="group" aria-label="First group" style="margin-right:70px; margin-top:20px">
       <button type="button" class="btn"  data-toggle="modal" data-target="#submitModal" id="btnmodal" style="background-color: #1de9b6;">
         <i class="material-icons" style="font-size:15px">monetization_on</i> เปิดรายการสั่งซื้อ</button>
     </div>

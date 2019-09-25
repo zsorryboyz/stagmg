@@ -121,7 +121,7 @@ if (isset($_SESSION['first_name'])) {
             <div class="row">
               <?php
 
-              $get_p_cats = "select * from product  where idMember";
+              $get_p_cats = "select * from product ";
               $run_p_cats = mysqli_query($con,$get_p_cats);
 
               while ($row=mysqli_fetch_array($run_p_cats)){
