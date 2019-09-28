@@ -47,7 +47,7 @@
     var defaults = {
         data: [],
         final: 'Are you sure you want to confirm?',
-        finalLabel: 'Complete',
+        finalLabel: 'เสร็จสิ้น',
         title: '',
         prevText: 'Previous',
         skipText: 'Skip',
@@ -262,7 +262,8 @@
                 } else {
                     $this.prev.removeClass(_disabledClass).removeAttr(_disabledClass);
                 }
-                $this._completeStep(nextIdx);
+                $this._
+                leteStep(nextIdx);
                 $this._showContent(nextIdx + 1);
 
             });

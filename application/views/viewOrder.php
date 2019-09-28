@@ -1,8 +1,17 @@
 <?php
-$con = mysqli_connect("localhost","root","","project");
+$con = mysqli_connect("us-cdbr-iron-east-02.cleardb.net","b1a622bf325640","9008a9dd","heroku_e74b0dc8e642086");
 header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset', 'utf-8');
 mysqli_set_charset($con,"utf8");
+
+
+if (isset($_SESSION['first_name'])) {
+  // code...
+}else{
+ header( "location: index" );
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,26 +61,27 @@ tr:nth-child(even) {
 
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="home">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6200ea;">
+  <a class="navbar-brand text-light" href="home">
     <img src="<?php echo base_url('assets/img/ll.jpg'); ?>" width="50" height="50">
     STAQMG</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="Messenger">สนทนา</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="order">รายการสั่งสินค้า</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">สถิติ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="product">จัดการร้านค้า</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="Messenger">สนทนา</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="order">รายการสั่งสินค้า</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="#">สถิติ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-light" href="product">จัดการร้านค้า</a>
+        </li>
+      </ul>
+    </div>
 </nav>
 
 
@@ -80,13 +90,13 @@ tr:nth-child(even) {
 
     <!-- Sidebar -->
 
-    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:20px;">
+    <div class="bg-light border-right" id="sidebar-wrapper" style="margin-top:10px;">
       <div class="list-group list-group-flush">
-        <h5 class="top text-center">สินค้า</h5>
+      
         <a href="Product" class="list-group-item list-group-item-action bg-light">อัลบัมสินค้า</a>
         <a href="orderstore" class="list-group-item list-group-item-action bg-light">สินค้าคงคลัง</a>
-        <h5 class="top text-center">การส่งสินค้า</h5>
-        <a href="viewOrder" class="list-group-item list-group-item-action bg-light">การจัดส่งสินค้า</a>
+        
+        <a href="viewOrder" class="list-group-item list-group-item-action bg-light">ประวัติการขาย</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ประวัติการส่ง</a>
       </div>
     </div>
@@ -96,40 +106,82 @@ tr:nth-child(even) {
 
     <div id="page-content-wrapper">
 
-      <input id="myInput" type="text" placeholder="Search.." style="margin-left:50px">
-      <br><br>
+    <div class="container-fluid">
+        <h5 class="mt-4" style="margin-left: 10px;">ประวัติการขาย</h5>
+      </div>
 
-      <table>
-        <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-        </tr>
-        </thead>
-        <tbody id="myTable">
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@mail.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@greatstuff.com</td>
-        </tr>
-        <tr>
-          <td>Anja</td>
-          <td>Ravendale</td>
-          <td>a_r@test.com</td>
-        </tr>
-        </tbody>
-      </table>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2 search-order" id="search-order"  placeholder="ชื่อสินค้า..." aria-label="Search"style="margin-left:70px; margin-top:10px">
+      </form>
+
+
+      <div class="container">
+          <br>
+          <div class="col-lg-9">
+
+            <div class="row">
+              <table  class="table table-borderless">
+  <thead style="background-color: #1de9b6;">
+    <tr>
+      <th scope="col" class="text-center"></th>
+      <th scope="col" class="text-center">วันที่ขาย</th>
+      <th scope="col" class="text-center">ชื่อลูกค้า</th>
+      <th scope="col" class="text-center">ชื่อสินค้า</th>
+      <th scope="col" class="text-center">จำนวนชิ้น</th>
+      <th scope="col" class="text-center">ราคาทั้งหมด</th>
+    </tr>
+  </thead>
+  <tbody id="table-order">
+    <?php
+      $get_p_cats = "SELECT *  FROM order_detail ,`order` WHERE order.idOrder = order_detail.idOrder AND order_detail.idProduct = product.idProduct AND ( order.status_order = 'โอนแล้ว' OR order.status_order = 'ส่งแล้ว' )) AS SUM FROM `product`";
+      $run_p_cats = mysqli_query($con,$get_p_cats);
+
+      while ($row=mysqli_fetch_array($run_p_cats)){
+
+          $name_product = $row['name_product'];
+          $idProduct = $row['idProduct'];
+          $image_product = $row['image_product'];
+          $price = $row['price'];
+          $amount_product = $row['amount_product'];
+          $detail_product = $row['detail_product'];
+          $idProduct_type = $row['idProduct_type'];
+          $SUM = $row['SUM'];
+
+          echo " <tr>
+                  <th><img class='card-img' src='../$image_product' alt='Card image'></th>
+                  <td class='text-center'>$name_product</td>
+                  <td class='text-center'>$SUM</td>
+                  <td class='text-center'>$amount_product ชิ้น</td>
+                  <td class='text-center'><span class='btn btn-info  store-product' data-id='$idProduct' data-img='$image_product' data-amount='$amount_product' >เพิ่มสินค้า</span></td>
+                </tr>
+
+            ";
+
+
+      }
+
+    ?>
+
+
+
+
+
+
+
+
+  </tbody>
+
+
+
+
+
+            </div>
+            <!-- /.row -->
+
+          </div>
+          <!-- /.col-lg-9 -->
+
+        </div>
 
 
     </div>
@@ -143,16 +195,9 @@ tr:nth-child(even) {
   <!-- Menu Toggle Script -->
     <script>
 
-    $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+  
 
-  </script>
+   </script>
 
 </body>
 

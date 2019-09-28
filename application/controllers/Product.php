@@ -224,9 +224,32 @@ foreach ($this->input->post('data') as $key => $value) {
 
 
     $this->db->delete('order', array('idOrder' => $this->input->post('id')));
-     return print("ลบรายการสั่งซื้อเสร็จสิ้น!");
+    return print("success");
 
     }
+
+    public function  bill_print(){
+
+     
+      $query = $this->db->get_where('order', array('idOrder' => $this->input->get('id')));
+
+      foreach ($query->result() as $row)
+      {
+            $data["id"] = $row->idOrder;
+            $data["orderdate"] = $row->orderdate;
+            $data["name_customer"] = $row->name_customer;
+            $data["address_customer"] = $row->address_customer;
+            $data["Tel_customer"] = $row->Tel_customer;
+            $data["Price_all"] = $row->Price_all;
+            
+
+      }
+
+
+  	$this->load->view('Billprint',$data );
+       
+  
+      }
 
    
 

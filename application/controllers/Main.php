@@ -64,4 +64,10 @@ class Main extends CI_Controller {
 		$this->load->view('test');
 
 	}
+
+	public function view_ship()
+	{
+		$this->load->view('view_ship');
+
+	}
 }

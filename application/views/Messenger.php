@@ -145,6 +145,7 @@ if (isset($_SESSION['first_name'])) {
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/MultiStep.min.js'); ?>"></script>
+  
 
 
 
@@ -340,6 +341,7 @@ text += `<form class='form-inline'>
               <lable for='staticship' style='margin-left:40px;'>บริษัทที่จัดส่ง: </lable>
               <input type='text' class='form-control'value='${$( "#product_cat option:selected" ).text()}' disabled>
             </div>
+            
         </form>`
 // text += "<p class='txt-no' style='margin-left:20px;'>เบอร์โทรศัพท์</p>"
 
@@ -587,6 +589,7 @@ var td = "";
 
              },],
              final:'<div id="pages4"> </div>',
+             finalLabel: 'เสร็จสิ้น',
              modalSize:'lg'
          });
      });

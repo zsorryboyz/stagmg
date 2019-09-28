@@ -10,7 +10,7 @@ $con = mysqli_connect("us-cdbr-iron-east-02.cleardb.net","b1a622bf325640","9008a
 
 
 if (isset($_SESSION['first_name'])) {
-  // code...
+  // code... 
 }else{
  header( "location: index" );
 }
@@ -32,10 +32,15 @@ if (isset($_SESSION['first_name'])) {
   <title>STAQMG</title>
 
   <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 
   <!-- Custom styles for this template -->
@@ -76,6 +81,9 @@ if (isset($_SESSION['first_name'])) {
   #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
   }
+
+
+
   </style>
 
 </head>
@@ -108,10 +116,13 @@ if (isset($_SESSION['first_name'])) {
     <br>
 
     <div class="nav nav-pills justify-content-end" role="group" aria-label="First group">
+
+
       <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" style="margin-right:20px;">
         <i class="material-icons" style="font-size:15px">monetization_on</i> ยืนยันชำระเงิน</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal11" style="margin-right:95px;">
-          <i class="material-icons"  style="font-size:15px">monetization_on</i> ลบรายการ</button>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal11" style="margin-right:90px;">
+          <i class="material-icons"  style="font-size:15px">monetization_on</i> จัดส่งสินค้า</button>
     </div>
 
     <!-- Modal Confirm -->
@@ -126,6 +137,12 @@ if (isset($_SESSION['first_name'])) {
       </div>
       <div class="modal-body">
         <h5 class="text-center">คุณต้องการยืนยันการชำระเงินหรือไม่?</h5>
+        <form class="text-center">
+          <div class="form-group">
+            <label for="exampleFormControlFile1">บันทึกสลิปโอนเงิน</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" style="margin-left:80px">
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -142,17 +159,17 @@ if (isset($_SESSION['first_name'])) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ลบรายการสั่งซื้อสินค้า</h5>
+        <h5 class="modal-title" id="exampleModalLabel">จัดส่งสินค้า</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <h5 class="text-center">คุณต้องการลบรายการสั่งซื้อหรือไม่?</h5>
+        <h5 class="text-center">คุณต้องการยืนยันการจัดส่งสินค้าหรือไม่?</h5>          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="button" id="sumbmitdel" class="btn btn-primary">ยืนยัน</button>
+        <button type="button" id="sumbmit1" class="btn btn-primary">ยืนยัน</button>
       </div>
     </div>
   </div>
@@ -191,7 +208,7 @@ if (isset($_SESSION['first_name'])) {
         <th>ชื่อผู้สั่งสินค้า</th>
         <th>จำนวนเงินทั้งหมด</th>
         <th>สถานะ</th>
-        <th>ลบรายการ</th>        
+        <th>พิมพ์ใบเสร็จ/ลบ</th>        
       </tr>
     </thead>
     <tbody id = "table-order">
@@ -207,6 +224,8 @@ if (isset($_SESSION['first_name'])) {
               $Priceall  = $rowOrder['Price_all'];
               $status  = $rowOrder['status_order'];
 
+              $billorder = base_url('Product/bill_print').'?id='.$Orderid;
+
               echo "
 
               <tr>
@@ -216,6 +235,7 @@ if (isset($_SESSION['first_name'])) {
                 <td class='text-center'>$DateOrder</td>
                 <td class='text-center'>$nameCus</td>
                 <td class='text-center'>$Priceall .00 บาท</td>
+                
                 
 
                 ";
@@ -235,8 +255,11 @@ if (isset($_SESSION['first_name'])) {
 
                 }
 
-                echo "<td class='text-center'><a><span data-id='$Orderid' class='btn btn-danger mx-auto  Delor'>ลบ</span></a></td></tr>";
-
+                  echo "<td  class='text-center'><a href='$billorder'><span id='Print' class='btn btn-success mx-auto'><i class='far fa-file-alt'></i></span></a>
+                          <a data-id='$Orderid' class='btn btn-danger text-light mx-auto  btnDelor'><i class='far fa-trash-alt'></i></a>
+                  
+                  </td></tr>";
+                
             }
 
 
@@ -251,10 +274,6 @@ if (isset($_SESSION['first_name'])) {
 </div>
 
 </form>
-
-
-
-
 
 
 
@@ -316,41 +335,88 @@ if (isset($_SESSION['first_name'])) {
 
       });
 
-
-      $(".Delor").click(function(){
-
-
-        // alert($(this).data('id'))
-
-        $.ajax({
-               url: '<?php echo base_url('Product/delete_order'); ?>',
-               type: 'post',
-               dataType: 'html',
-               data: {id:$(this).data('id')},
-             }).done(function(response) {
-               if(response=="ลบรายการสั่งซื้อเสร็จสิ้น!"){
-
-               window.location.href = "<?php echo base_url('Main/order'); ?>";
-
-               }
-                alert(response);
-
-             });
-
-
-      });
+      $("#sumbmit1").click(function(){
 
 
 
+          var or2 = [];
+
+          $('input[class=orderch]').each(function () {
+
+            if(this.checked){
+              or2.push({
+
+                orderid:$(this).data('id'),
+                status:$(this).data('status'),
+
+
+
+
+              });
+                
+            }
+            
+            });
+
+            $.ajax({
+                  url: '<?php echo base_url('Product/update_order'); ?>',
+                  type: 'post',
+                  dataType: 'html',
+                  data: {data:or2},
+                }).done(function(response) {
+                  if(response=="success"){
+
+                  window.location.href = "<?php echo base_url('Main/order'); ?>";
+
+                  }
+                    alert(response);
+
+                });
+
+
+          });
+
+
+       
     });
 
 
+    $('.btnDelor').on("click", function () {
+
+          var id = $(this).data('id')
+          // alert($(this).data('id'))
+          swal({
+          title: "คุณต้องการจะลบรายการสั่งซื้อหรือไม่?",
+          text: "",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "ยืนยัน",
+          cancelButtonText: "ยกเลิก",
+          closeOnConfirm: false,
+          closeOnCancel: false},
+          function (isConfirm) {
+          if (isConfirm) {
+          $.ajax({
+                              url: '<?php echo base_url('Product/delete_order'); ?>',
+                            type: 'post',
+                            dataType: 'html',
+                            data: {id:id},
+                              success: function () {
+                                  swal("เสร็จแล้ว!","ลบรายการสั่งซื้อเรียบร้อยแล้ว!","success");
+                                  window.location.href = "<?php echo base_url('Main/order'); ?>";
+                              } 
+                              
+                          });
+
+          }else {
+          swal("ยกเลิก", "อะไรบางอย่างผิดปกติ. กรุณาลองอีกครั้ง.", "error");
+          }
+          });
+          });
 
 
-
-
-
-
+   
 
 
 </script>
