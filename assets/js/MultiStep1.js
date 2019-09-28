@@ -47,7 +47,7 @@
     var defaults = {
         data: [],
         final: 'Are you sure you want to confirm?',
-        finalLabel: 'เสร็จสิ้น',
+        finalLabel: 'Complete',
         title: '',
         prevText: 'Previous',
         skipText: 'Skip',
@@ -192,7 +192,7 @@
 
         },
         _buildFooterContent: function() {
-            var footer = `<button type="button" class="btn btn-sm ${_prevClass}">${this.options.prevText}</button>
+            var footer = `<button type="button" id="backstep"  class="btn btn-sm ${_prevClass}">${this.options.prevText}</button>
             <button type="button" class="btn btn-sm ${_skipClass}">${this.options.skipText}</button>
             <button type="button" class="btn btn-sm ${_nextClass}">${this.options.nextText}</button>`;
             this.footer.html(footer);
@@ -208,6 +208,8 @@
         _attachPrevEvent: function() {
             var $this = this;
             $this.prev.click(function() {
+                 $('#pages').val($('#pages').val()-1);
+
                 $this.next.text($this.options.nextText);
                 var prevIdx = $this.currentStepIdx - 1;
                 if (prevIdx <= 1) {
@@ -262,8 +264,7 @@
                 } else {
                     $this.prev.removeClass(_disabledClass).removeAttr(_disabledClass);
                 }
-                $this._
-                leteStep(nextIdx);
+                $this._completeStep(nextIdx);
                 $this._showContent(nextIdx + 1);
 
             });

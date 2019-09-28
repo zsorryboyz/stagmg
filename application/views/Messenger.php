@@ -90,9 +90,12 @@ if (isset($_SESSION['first_name'])) {
       </ul>
     </div>
 </nav>
+
+<input type="text" id="pages" value="0" hidden>
+
 <!-- Load Facebook SDK for JavaScript -->
       <div id="fb-root"></div>
-      <script>
+      <!-- <script>
         window.fbAsyncInit = function() {
           FB.init({
             xfbml            : true,
@@ -106,14 +109,14 @@ if (isset($_SESSION['first_name'])) {
         js = d.createElement(s); js.id = id;
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
+      }(document, 'script', 'facebook-jssdk'));</script> -->
 
       <!-- Your customer chat code -->
-      <div class="fb-customerchat"
+      <!-- <div class="fb-customerchat"
         attribution=setup_tool
         page_id="100245044713165"
   theme_color="#0084ff">
-      </div>
+      </div> -->
 <!-- <div class="fb-customerchat" page_id="100245044713165"></div>
 <! <div class="fb-messengermessageus"
   messenger_app_id="639497196533705"
@@ -131,7 +134,6 @@ if (isset($_SESSION['first_name'])) {
 
 
 <div id="submitModal" class="multi-step">
-
 </div>
 
 
@@ -144,7 +146,9 @@ if (isset($_SESSION['first_name'])) {
   <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="<?php echo base_url('assets/js/MultiStep.min.js'); ?>"></script>
+
+
+  <script type="text/javascript" src="<?php echo base_url('assets/js/MultiStep1.js'); ?>"></script>
   
 
 
@@ -182,13 +186,9 @@ if (isset($_SESSION['first_name'])) {
 
 
   $(document).ready(function() {
-var pages = 0;
-
 
 $(document).on('click','#btnmodal',function(){
-   pages = 0;
-
-
+   $('#pages').val(0)
 })
 
 
@@ -237,15 +237,14 @@ var td = "";
     $('#sum_'+$(this).data('id')).html(price)
 
     });
-    $(document).on('click',".btn-prev",function(){
-      pages = pages-1;
 
-
-})
 
   var temp = {};
+    // $(document).on('click',".btn-prev",function(){
+    //   alert();
+    //   pages = pages-1;
+    //   })
     $(document).on('click',".btn-next",function(){
-
       if($(this).html()==="Finish"){
         $('#pages4').empty();
 
@@ -362,9 +361,9 @@ $('#pages4').append(text);
 
 
 if($(this).html()==="Next"){
-  pages = pages+1;
+  $('#pages').val($('#pages').val()+1);
 
-if(pages==1){
+if($('#pages').val()==1){
   // alert(1)
 
   temp= {};
@@ -393,10 +392,10 @@ var td = "";
  $('#bodytable').append(td);
 });
 
-}else if(pages==2){
+}else if($('#pages').val()==2){
 
   // alert(2)
-}else if(pages==3){
+}else if($('#pages').val()==3){
 
   var name =  $('#inputName').val();
   var no =  $('#inputNo').val();

@@ -31,7 +31,7 @@ if($_SERVER['HTTP_HOST']==="localhost"){
     $config['base_url'] = 'https://staqmg.herokuapp.com';
 }
 
-
+ 
 
 
 /*

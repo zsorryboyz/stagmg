@@ -59,8 +59,6 @@ header('Access-Control-Allow-Origin: *');
   ============================-->
   <header id="header">
 
-
-
     <div class="container">
 
       <div class="logo float-left">
